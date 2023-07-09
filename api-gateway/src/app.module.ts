@@ -10,6 +10,9 @@ import { Services } from './constants';
       {
         name: Services.COMMUNICATION,
         transport: Transport.TCP,
+        options: {
+          port: 3001,
+        },
       },
     ]),
   ],
