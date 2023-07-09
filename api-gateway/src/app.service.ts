@@ -30,4 +30,13 @@ export class AppService {
       new CreateUserEvent(createUserDto.email),
     );
   }
+
+  getAnalytics() {
+    return this.analyticsServiceClient.send(
+      {
+        cmd: 'get_analytics',
+      },
+      {},
+    );
+  }
 }

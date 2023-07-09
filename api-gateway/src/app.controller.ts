@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateUserDto } from './create-user.dto';
+import { Observable } from 'rxjs';
 
 @Controller()
 export class AppController {
@@ -14,5 +15,10 @@ export class AppController {
   @Post()
   createUser(@Body() createUserDto: CreateUserDto) {
     this.appService.createUser(createUserDto);
+  }
+
+  @Get('/analytics')
+  getAnalytics(): Observable<any[]> {
+    return this.appService.getAnalytics();
   }
 }
