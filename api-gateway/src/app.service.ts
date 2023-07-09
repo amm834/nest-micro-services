@@ -11,6 +11,8 @@ export class AppService {
   constructor(
     @Inject(Services.COMMUNICATION)
     private readonly communicationServiceClient: ClientProxy,
+    @Inject(Services.ANALYTICS)
+    private readonly analyticsServiceClient: ClientProxy,
   ) {}
 
   getHello(): string {
@@ -20,6 +22,10 @@ export class AppService {
   createUser(createUserDto: CreateUserDto) {
     this.users.push(createUserDto);
     this.communicationServiceClient.emit(
+      'user_created',
+      new CreateUserEvent(createUserDto.email),
+    );
+    this.analyticsServiceClient.emit(
       'user_created',
       new CreateUserEvent(createUserDto.email),
     );

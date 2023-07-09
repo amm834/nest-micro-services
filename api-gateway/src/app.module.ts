@@ -14,6 +14,13 @@ import { Services } from './constants';
           port: 3001,
         },
       },
+      {
+        name: Services.ANALYTICS,
+        transport: Transport.TCP,
+        options: {
+          port: 3003,
+        },
+      },
     ]),
   ],
   controllers: [AppController],
